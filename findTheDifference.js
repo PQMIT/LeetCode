@@ -1,19 +1,10 @@
 var s = "abcd";
-var t = "bcde";
-var findTheDifference = function (s, t) {
-    let result = 0;
+var t = "aabcde";
 
-    // Tính tổng mã ASCII của các ký tự trong `s` (trừ dần)
-    for (let i = 0; i < s.length; i++) {
-        result -= s.charCodeAt(i);
-    }
-
-    // Tính tổng mã ASCII của các ký tự trong `t` (cộng dần)
-    for (let i = 0; i < t.length; i++) {
-        result += t.charCodeAt(i);
-    }
-
-    // Chuyển kết quả cuối cùng (giá trị ASCII) thành ký tự
-    return String.fromCharCode(result);
-};
+var findTheDifference = (s, t) => {
+    s = Array.from(s);
+    t = Array.from(t);
+    let result = (s.filter(x => !t.includes(x)).concat(t.filter(x => !s.includes(x))));
+    return result.toString();
+}
 console.log(findTheDifference(s, t));
